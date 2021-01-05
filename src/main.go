@@ -18,13 +18,13 @@ func repeatMe(words ...string) { //같은 타입의 인자를 여러 개 받을 
 }
 
 func main() {
+	name := "sk" // var name string = "sk"와 같다, func안에서만 작동한다.
+	name = "sk kim"
 	totalLength, upperName := lenAndUpper("sk")
 	length, _ := lenAndUpper("nico") // value값을 무시한다
+	fmt.Println(name)
 	fmt.Println(multiply(2, 2))
 	fmt.Println(totalLength, upperName)
 	fmt.Println(length)
 	repeatMe("seon", "kyeong", "kim")
-	//name := "sk" // var name string = "sk"와 같다, func안에서만 작동한다.
-	//name = "sk kim"
-	//fmt.Println(name)
 }
