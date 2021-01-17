@@ -31,27 +31,43 @@ func repeatMe(words ...string) { //같은 타입의 인자를 여러 개 받을 
 }
 */
 
+/* go의 for문
 func superAdd(numbers ...int) int {
 	for index, number := range numbers { //range : loop를 만드는 방법
 		fmt.Println(index, number)
 	}
-	/* index를 무시하고 받은 값들의 합을 보내기
+	//index를 무시하고 받은 값들의 합을 보내기
 	total := 0
 	for _, number := range numbers {
 		total += number
 	}
 	return total
-	*/
-	/* 일반적인 for문으로 loop 작성하기
+
+	//일반적인 for문으로 loop 작성하기
 	for i := 0; i < len(numbers); i++ {
 		fmt.Println(numbers[i])
 	}
-	*/
+
 	return 1
+}
+*/
+
+func canIDrink(age int) bool {
+	/*
+		if age < 18 {
+			return false
+		}
+		return true
+	*/
+	if koreanAge := age + 2; koreanAge < 20 {
+		return false
+	}
+	return true
 }
 
 func main() {
-	superAdd(1, 2, 3, 4, 5, 6)
+	fmt.Println(canIDrink(18))
+	//superAdd(1, 2, 3, 4, 5, 6)
 	//name := "sk" // var name string = "sk"와 같다, func안에서만 작동한다.
 	//name = "sk kim"
 	//totalLength, upperName := lenAndUpper("sk")
