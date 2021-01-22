@@ -59,10 +59,27 @@ func canIDrink(age int) bool {
 		}
 		return true
 	*/
-	if koreanAge := age + 2; koreanAge < 20 {
+	/*
+		if koreanAge := age + 2; koreanAge < 20 {
+			return false
+		}
+		return true
+	*/
+	/*
+		switch {
+		case age < 18:
+			return false
+		case age == 18:
+			return true
+		}
+	*/
+	switch koreanAge := age + 2; koreanAge {
+	case 10:
 		return false
+	case 18:
+		return true
 	}
-	return true
+	return false
 }
 
 func main() {
