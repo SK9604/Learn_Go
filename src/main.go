@@ -51,28 +51,22 @@ func superAdd(numbers ...int) int {
 	return 1
 }
 */
-
+/* switch
 func canIDrink(age int) bool {
-	/*
 		if age < 18 {
 			return false
 		}
 		return true
-	*/
-	/*
 		if koreanAge := age + 2; koreanAge < 20 {
 			return false
 		}
 		return true
-	*/
-	/*
 		switch {
 		case age < 18:
 			return false
 		case age == 18:
 			return true
 		}
-	*/
 	switch koreanAge := age + 2; koreanAge {
 	case 10:
 		return false
@@ -81,9 +75,16 @@ func canIDrink(age int) bool {
 	}
 	return false
 }
-
+*/
 func main() {
-	fmt.Println(canIDrink(18))
+	a := 2
+	b := a
+	c := &a //& = 주소
+	a = 10
+	fmt.Println(&a, a, &b, b, c, *c)
+	*c = 20 //* = 주소에 있는 값
+	fmt.Println(*c, a)
+	//fmt.Println(canIDrink(18))
 	//superAdd(1, 2, 3, 4, 5, 6)
 	//name := "sk" // var name string = "sk"와 같다, func안에서만 작동한다.
 	//name = "sk kim"
