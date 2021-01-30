@@ -77,13 +77,23 @@ func canIDrink(age int) bool {
 }
 */
 func main() {
-	a := 2
+	names1 := [5]string{"sk", "kim", "kyu"} //Array
+	names2 := []string{"sk", "kim", "kyu"}  // Slice = 크기 제한 없는 Array
+	names1[3] = "heon"
+	names1[4] = "jin"
+	//names1[5] = "hee" //array값을 벗어남
+	//names2[3] = "heon" //Slice에 새로운 값을 추가할 경우에는 append함수 사용
+	names2 = append(names2, "jin")
+	fmt.Println(names1)
+	fmt.Println(names2)
+	/*a := 2
 	b := a
 	c := &a //& = 주소
 	a = 10
 	fmt.Println(&a, a, &b, b, c, *c)
 	*c = 20 //* = 주소에 있는 값
 	fmt.Println(*c, a)
+	*/
 	//fmt.Println(canIDrink(18))
 	//superAdd(1, 2, 3, 4, 5, 6)
 	//name := "sk" // var name string = "sk"와 같다, func안에서만 작동한다.
