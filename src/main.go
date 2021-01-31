@@ -77,15 +77,22 @@ func canIDrink(age int) bool {
 }
 */
 func main() {
-	names1 := [5]string{"sk", "kim", "kyu"} //Array
-	names2 := []string{"sk", "kim", "kyu"}  // Slice = 크기 제한 없는 Array
-	names1[3] = "heon"
-	names1[4] = "jin"
-	//names1[5] = "hee" //array값을 벗어남
-	//names2[3] = "heon" //Slice에 새로운 값을 추가할 경우에는 append함수 사용
-	names2 = append(names2, "jin")
-	fmt.Println(names1)
-	fmt.Println(names2)
+	sk := map[string]string{"name": "sk", "age": "12"} //key:value 형태
+	fmt.Println(sk)
+	for key, value := range sk {
+		fmt.Println(key, value)
+	}
+	/*
+		names1 := [5]string{"sk", "kim", "kyu"} //Array
+		names2 := []string{"sk", "kim", "kyu"}  // Slice = 크기 제한 없는 Array
+		names1[3] = "heon"
+		names1[4] = "jin"
+		//names1[5] = "hee" //array값을 벗어남
+		//names2[3] = "heon" //Slice에 새로운 값을 추가할 경우에는 append함수 사용
+		names2 = append(names2, "jin")
+		fmt.Println(names1)
+		fmt.Println(names2)
+	*/
 	/*a := 2
 	b := a
 	c := &a //& = 주소
