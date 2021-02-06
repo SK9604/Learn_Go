@@ -76,12 +76,24 @@ func canIDrink(age int) bool {
 	return false
 }
 */
+
+type person struct {
+	name    string
+	age     int
+	favFood []string
+}
+
 func main() {
-	sk := map[string]string{"name": "sk", "age": "12"} //key:value 형태
-	fmt.Println(sk)
-	for key, value := range sk {
-		fmt.Println(key, value)
-	}
+	favFood := []string{"ricenoodle", "strawberry"}
+	sk := person{"sk", 26, favFood}
+	fmt.Println(sk.name, sk.age, sk.favFood)
+	/*
+		sk := map[string]string{"name": "sk", "age": "12"} //key:value 형태
+		fmt.Println(sk)
+		for key, value := range sk {
+			fmt.Println(key, value)
+		}
+	*/
 	/*
 		names1 := [5]string{"sk", "kim", "kyu"} //Array
 		names2 := []string{"sk", "kim", "kyu"}  // Slice = 크기 제한 없는 Array
