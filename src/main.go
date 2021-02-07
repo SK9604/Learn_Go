@@ -1,6 +1,7 @@
 package main
 
 import (
+	"accounts"
 	"fmt"
 )
 
@@ -76,17 +77,23 @@ func canIDrink(age int) bool {
 	return false
 }
 */
-
+/*struct
 type person struct {
 	name    string
 	age     int
 	favFood []string
 }
-
+*/
 func main() {
+	//account := banking.Account{Owner: "sk", Balance: 10000}
+	//fmt.Println(account)
+	account := accounts.NewAccount("sk")
+	fmt.Println(account)
+	/*struct
 	favFood := []string{"ricenoodle", "strawberry"}
 	sk := person{"sk", 26, favFood}
 	fmt.Println(sk.name, sk.age, sk.favFood)
+	*/
 	/*
 		sk := map[string]string{"name": "sk", "age": "12"} //key:value 형태
 		fmt.Println(sk)
