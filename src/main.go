@@ -88,7 +88,8 @@ func main() {
 	//account := banking.Account{Owner: "sk", Balance: 10000}
 	//fmt.Println(account)
 	account := accounts.NewAccount("sk")
-	fmt.Println(account)
+	account.Deposit(10)
+	fmt.Println(account.balance)
 	/*struct
 	favFood := []string{"ricenoodle", "strawberry"}
 	sk := person{"sk", 26, favFood}
