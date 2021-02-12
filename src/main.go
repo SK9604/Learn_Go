@@ -89,7 +89,12 @@ func main() {
 	//fmt.Println(account)
 	account := accounts.NewAccount("sk")
 	account.Deposit(10)
-	fmt.Println(account.balance)
+	fmt.Println(account.Balance())
+	err := account.Withdraw(20)
+	if err != nil {
+		fmt.Println(err)
+	}
+	fmt.Println(account.Balance())
 	/*struct
 	favFood := []string{"ricenoodle", "strawberry"}
 	sk := person{"sk", 26, favFood}
