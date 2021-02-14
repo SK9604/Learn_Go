@@ -1,8 +1,8 @@
 package main
 
 import (
-	"accounts"
 	"fmt"
+	"mydict"
 )
 
 /* 기본적인 function의 형식
@@ -85,18 +85,27 @@ type person struct {
 }
 */
 func main() {
+	dictionary := mydict.Dictionary{}
+	definition, err := dictionary.Search("first")
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println(definition)
+	}
 	//account := banking.Account{Owner: "sk", Balance: 10000}
 	//fmt.Println(account)
-	account := accounts.NewAccount("sk")
-	account.Deposit(10)
 	/*
-		fmt.Println(account.Balance())
-		err := account.Withdraw(20)
-		if err != nil {
-			fmt.Println(err)
-		}
+		account := accounts.NewAccount("sk")
+		account.Deposit(10)
+
+			fmt.Println(account.Balance())
+			err := account.Withdraw(20)
+			if err != nil {
+				fmt.Println(err)
+			}
+
+		fmt.Println(account)
 	*/
-	fmt.Println(account)
 	/*struct
 	favFood := []string{"ricenoodle", "strawberry"}
 	sk := person{"sk", 26, favFood}
