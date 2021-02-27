@@ -1,8 +1,9 @@
 package main
 
 import (
+	"errors"
 	"fmt"
-	"mydict"
+	"net/http"
 )
 
 /* 기본적인 function의 형식
@@ -84,18 +85,46 @@ type person struct {
 	favFood []string
 }
 */
-func main() {
-	dictionary := mydict.Dictionary{}
-	baseword := "hello"
-	dictionary.Add(baseword, "First")
-	dictionary.Search(baseword)
-	dictionary.Delete(baseword)
-	word, _ := dictionary.Search(baseword)
-	if err != nil {
-		fmt.Println(err)
-	} else {
-		fmt.Println(word)
+var errRequestFailed = errors.New("Request failed")
+
+func hitURL(url string) error {
+	fmt.Println("Checking:", url)
+	resp, err := http.Get(url)
+	if err == nil || resp.StatusCode >= 400 {
+		return errRequestFailed
 	}
+	return nil
+}
+
+func main() {
+	urls := []string{
+		"https://www.airbnb.com/",
+		"https://www.google.com/",
+		"https://www.amazon.com/",
+		"https://www.reddit.com/",
+		"https://www.google.com/",
+		"https://soundcloud.com/",
+		"https://www.facebook.com/",
+		"https://www.instagram.com/",
+		"https://academy.nomadcoders.co/",
+	}
+	for _, url := range urls {
+		hitURL(url)
+	}
+
+	/*
+		dictionary := mydict.Dictionary{}
+		baseword := "hello"
+		dictionary.Add(baseword, "First")
+		dictionary.Search(baseword)
+		dictionary.Delete(baseword)
+		word, _ := dictionary.Search(baseword)
+		if err != nil {
+			fmt.Println(err)
+		} else {
+			fmt.Println(word)
+		}
+	*/
 	/*
 		definition := "Greeting"
 		err := dictionary.Add(word, definition)
@@ -162,16 +191,17 @@ func main() {
 	*c = 20 //* = 주소에 있는 값
 	fmt.Println(*c, a)
 	*/
-	//fmt.Println(canIDrink(18))
-	//superAdd(1, 2, 3, 4, 5, 6)
-	//name := "sk" // var name string = "sk"와 같다, func안에서만 작동한다.
-	//name = "sk kim"
-	//totalLength, upperName := lenAndUpper("sk")
-	//length, _ := lenAndUpper("nico") // value값을 무시한다
-	//fmt.Println(name)
-	//fmt.Println(multiply(2, 2))
-	//fmt.Println(totalLength, upperName)
-	//fmt.Println(length)
-	//repeatMe("seon", "kyeong", "kim")
-
+	/*
+		fmt.Println(canIDrink(18))
+		superAdd(1, 2, 3, 4, 5, 6)
+		name := "sk" // var name string = "sk"와 같다, func안에서만 작동한다.
+		name = "sk kim"
+		totalLength, upperName := lenAndUpper("sk")
+		length, _ := lenAndUpper("nico") // value값을 무시한다
+		fmt.Println(name)
+		fmt.Println(multiply(2, 2))
+		fmt.Println(totalLength, upperName)
+		fmt.Println(length)
+		repeatMe("seon", "kyeong", "kim")
+	*/
 }
