@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"time"
+)
+
 /* 기본적인 function의 형식
 func multiply(a, b int) int { //(a int, b int)와 같다
 	return a * b
@@ -100,8 +105,20 @@ func sexyCount(person string) {
 	}
 }
 */
+func isSexy(person string, c chan bool) {
+	time.Sleep(time.Second * 5)
+	c <- true
+}
 func main() {
+	c := make(chan bool)
+	people := [2]string{"nico", "flynn"}
+	for _, person := range people {
+		go isSexy(person, c)
+	}
+	fmt.Println(<-c)
+	fmt.Println(<-c)
 	/*
+		time.Sleep(time.Second *5)
 		go sexyCount("SK")
 		go sexyCount("Kim")
 		time.Sleep(time.Second * 5) //goroutines는 메인 함수가 작동하는 동안에만 동작함
