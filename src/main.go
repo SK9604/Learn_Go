@@ -105,18 +105,29 @@ func sexyCount(person string) {
 	}
 }
 */
-func isSexy(person string, c chan bool) {
+func isSexy(person string, c chan string) {
 	time.Sleep(time.Second * 5)
-	c <- true
+	c <- person + " is Sexy"
 }
 func main() {
-	c := make(chan bool)
-	people := [2]string{"nico", "flynn"}
+	c := make(chan string)
+	people := [5]string{"nico", "flynn", "dal", "japanguy", "larry"}
 	for _, person := range people {
 		go isSexy(person, c)
 	}
-	fmt.Println(<-c)
-	fmt.Println(<-c)
+	fmt.Println("Waiting for messages")
+	for i:=0; i<len(people); i++{
+		fmt.Println(<-c)
+	}
+
+	/*
+	resultOne := <-c
+	resultTwo := <-c
+	resultThree := <-c
+	fmt.Println("Received this message:", resultOne)
+	fmt.Println("Received this message:", resultTwo)
+	fmt.Println("Received this message:", resultThree)
+	*/
 	/*
 		time.Sleep(time.Second *5)
 		go sexyCount("SK")
