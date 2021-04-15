@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"time"
+	"net/http"
 )
 
 /* 기본적인 function의 형식
@@ -105,11 +105,44 @@ func sexyCount(person string) {
 	}
 }
 */
+/*
 func isSexy(person string, c chan string) {
 	time.Sleep(time.Second * 5)
 	c <- person + " is Sexy"
 }
+*/
+type result struct {
+	url string
+	status string
+}
+
+
+func hitURL(url string, c chan<- result) { // send only
+	fmt.Println("Checking:", url)
+	resp, err := http.Get(url)
+	status := "OK"
+	if err != nil || resp.StatusCode >= 400 {
+		status = "FAILED"
+	}
+	c <- result{url:url, status: status}
+}
 func main() {
+	c := make(chan result)
+	urls := []string {
+		"https://www.airbnb.com/",
+		"https://www.google.com/",
+		"https://www.amazon.com/",
+		"https://www.reddit.com/",
+		"https://www.google.com/",
+		"https://soundcloud.com/",
+		"https://www.facebook.com/",
+		"https://www.instagram.com/",
+		"https://academy.nomadcoders.co/",
+	}
+	for _, url := range urls {
+		go hitURL(url, c)
+	}
+	/*
 	c := make(chan string)
 	people := [5]string{"nico", "flynn", "dal", "japanguy", "larry"}
 	for _, person := range people {
@@ -119,6 +152,7 @@ func main() {
 	fmt.Println(<-c)
 	fmt.Println(<-c)
 	fmt.Println(<-c)
+	*/
 	/*
 	fmt.Println("Waiting for messages")
 	for i:=0; i<len(people); i++{
